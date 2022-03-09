@@ -10,6 +10,7 @@ const io = new Server(server)
 
 
 const Bikes = require("./model/bikes")
+const ChatDB = require("./model/chatSQLite")
 
 const Contenedor = require(path.join(__dirname, "/model/contenedor.js"));
 const products = new Contenedor(path.join(__dirname, "/database/data.json"))
@@ -20,19 +21,12 @@ const chats = new Chat(path.join(__dirname, "/database/chat.json"))
 
 try {
 
-  Bikes.loadData()
-console.log("se creo la tabla");
-//   app.use(express.json())
-
-// //   app.get("/", (rq, rs) => rs.send("Hola"))
-  
-// //   app.listen(
-// //     8080,
-// //     () => console.log("Listening")
-//   )
+    Bikes.loadData()
+    ChatDB.loadData()
+    console.log("se creo la tabla");
 } catch (e) {
-  console.log(e)
-  console.log("could not start servers")
+    console.log(e)
+    console.log("could not start servers")
 }
 
 
@@ -45,10 +39,12 @@ app.use("/static", express.static(path.join(__dirname, "public")))
 
 
 
-// const bikeRouter = require("./routes/bikes")
-// app.use("/api/bikes", bikeRouter)
-// const homeRouter = require('./routes/home')
-// app.use("/", homeRouter)
+const bikeRouter = require("./routes/bikes")
+app.use("/api/bikes", bikeRouter)
+const chatRouter = require("./routes/chat")
+app.use("/api/chat", chatRouter)
+const homeRouter = require('./routes/home')
+app.use("/", homeRouter)
 
 
 

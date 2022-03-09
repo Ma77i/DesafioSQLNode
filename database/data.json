@@ -46,5 +46,11 @@
     "title": "Logo",
     "price": "4",
     "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/2/24/Specialized_red_S_black_logotype.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Demo Race",
+    "price": "4324",
+    "thumbnail": "https://images.bike24.net/i/mb/fc/c4/f9/demo-race-02-858542.jpg"
   }
 ]

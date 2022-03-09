@@ -24,43 +24,6 @@ class Bikes {
         }) 
     }
 
-    async getAll() {
-        const movies = await this.db("bikes")
-        return movies
-    }
-    
-    // async getByName(name = " ") {
-    //     const movies = await this.db("movies").whereILike("name", `%${name}%`).orderBy("name")
-    //     return movies
-    // }
-
-    async getById(id) {
-        const movie = await this.db("bikes")
-            .where({id})
-            //.first()
-        return movie
-    }
-
-    async update(id, body) {
-        console.log(id, body)
-        await this.db("bikes")
-            .where({ id })
-            .update(body)
-    }
-
-    async create(body) {
-        const rs = await this.db("bikes").insert(body)
-        return rs[0]
-    }
-
-    async delete(id) {
-        const rs = await this.db("bikes")
-            .where({ id })
-            .del()
-        return rs
-    }
-
-
     async loadData() {
         try {
             await this.db.schema.dropTableIfExists("bikes")
@@ -82,6 +45,42 @@ class Bikes {
             console.log(e)
             throw e
         }
+    }
+
+    async getAll() {
+        const movies = await this.db("bikes")
+        return movies
+    }
+    
+    // async getByName(name = " ") {
+    //     const movies = await this.db("movies").whereILike("name", `%${name}%`).orderBy("name")
+    //     return movies
+    // }
+
+    async getById(id) {
+        const bike = await this.db("bikes")
+            .where({id})
+            //.first()
+        return bike
+    }
+
+    async update(id, body) {
+        console.log(id, body)
+        await this.db("bikes")
+            .where({ id })
+            .update(body)
+    }
+
+    async create(body) {
+        const rs = await this.db("bikes").insert(body)
+        return rs[0]
+    }
+
+    async delete(id) {
+        const rs = await this.db("bikes")
+            .where({ id })
+            .del()
+        return rs
     }
 
 
